@@ -2,7 +2,24 @@
 #include <stdio.h>
 #include <errno.h>
 
-#include "mruby-all.h"
+#include "mruby.h"
+#include "mrbconf.h"
+#include "mruby/array.h"
+#include "mruby/class.h"
+#include "mruby/compile.h"
+#include "mruby/data.h"
+#include "mruby/dump.h"
+#include "mruby/gc.h"
+#include "mruby/hash.h"
+#include "mruby/irep.h"
+#include "mruby/khash.h"
+#include "mruby/numeric.h"
+#include "mruby/proc.h"
+#include "mruby/range.h"
+#include "mruby/string.h"
+#include "mruby/value.h"
+#include "mruby/variable.h"
+#include "../build/mrbgems/mruby-jni/include/mruby-jni.h"
 
 jint Java_com_github_wanabe_Andruboid_initialize(JNIEnv* env, jobject thiz, jstring jdir) {
   mrb_state *mrb = mrb_open();

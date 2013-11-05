@@ -13,7 +13,7 @@ andruboid.zip: setup
 	git clean -fxd -e "jni/*" -e $@
 	zip $@ -r . -x ./mruby\* $@
 
-setup: jni/$(MRUBY_A) jni/mruby-all.h
+setup: jni/$(MRUBY_A)
 
 jni/$(MRUBY_A): mruby/$(MRUBY_A_FULL)
 	cp $< $@
@@ -26,9 +26,6 @@ mruby:
 
 mruby_config.rb: mruby/build_config.rb build_config
 	cat $^ > mruby_config.rb
-
-jni/mruby-all.h: make_header.rb mruby
-	ruby $<
 
 build.xml:
 	$(ANDROID_SDK_HOME)/tools/android update project -p . -t 1

@@ -40,6 +40,8 @@ To test your mruby application using Andruboid you can change the ruby files ins
 
     adb push assets/ /storage/sdcard0/andruboid/
 
+You can start changing the file main.rb that is the starting point of your application.
+
 ## License
 
 Copyright (c) 2013 wanabe

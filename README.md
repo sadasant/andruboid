@@ -31,6 +31,15 @@ You can type:
     # AVM="VM Name" ADB=/path/to/adb AVMPLAYER_DIR=/dir/of/AndroVMplayer \
       ./androvm.sh
 
+## how to use it
+On the first execution on device Andruboid will create a folder with the assets directory on:
+
+    /storage/sdcard0/andruboid/
+
+To test your mruby application using Andruboid you can change the ruby files inside assets directory and upload to the device using the adb tool:
+
+    adb push assets/ /storage/sdcard0/andruboid/
+
 ## License
 
 Copyright (c) 2013 wanabe

@@ -197,7 +197,7 @@ module Jni
         when DialogInterface::BUTTON_NEUTRAL
           "skip"
         end
-        Toast.make_text(self, "you said '#{ans}'", Toast::LENGTH_SHORT).show
+        Toast.make_text(self, "you choosed the button '#{ans}'", Toast::LENGTH_SHORT).show
       end
       builder.set_positive_button "Yes", listener
       builder.set_negative_button "No", listener

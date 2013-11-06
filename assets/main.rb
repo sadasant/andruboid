@@ -1,6 +1,7 @@
 module Jni
   class Andruboid < Main
     include Java::Util
+    include Java::Net
     include Android::App
     include Android::View
     include Android::Widget
@@ -12,7 +13,7 @@ module Jni
       vlayout = LinearLayout.new(self)
       vlayout.orientation = LinearLayout::VERTICAL
       self.content_view = vlayout
-
+            
       button = Button.new(self)
       button.text = "exit"
       button.on_click_listener = Listener.new do
@@ -69,6 +70,19 @@ module Jni
       dialog.show
       
     end
+    
+    def socket_test
+      p "starting socket"
+      socket = nil
+      begin
+        socket = Socket.new("www.cloudwalk.io", 80)
+      rescue
+        p "socket error"
+        Jni.clear_exception
+      end
+      p "finishing socket success"
+    end
+    
     def button
       button = Button.new(self)
       button.text = "button"

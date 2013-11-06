@@ -1,6 +1,11 @@
 module Jni
   module J
     module Java
+      module Net
+        class Socket < Java::Lang::Object
+          attach_init Java::Lang::String, Int
+        end
+      end
       module Lang
         module Reflect
           class Field < Java::Lang::Object

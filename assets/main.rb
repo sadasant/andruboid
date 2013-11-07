@@ -78,15 +78,10 @@ module Jni
       
     end
     
+    # just works on API 8. In API 10 I got android.os.NetworkOnMainThreadException
     def socket_test
       p "starting socket"
-      socket = nil
-      begin
-        socket = Socket.new("www.cloudwalk.io", 80)
-      rescue
-        p "socket error"
-        Jni.clear_exception
-      end
+      socket = Socket.new("www.cloudwalk.io", 80)
       p "finishing socket success"
     end
     

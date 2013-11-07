@@ -2,6 +2,9 @@ module Jni
   module J
     module Android
       module Widget
+        class AbsoluteLayout < Android::View::ViewGroup
+          attach_init Android::Content::Context
+        end
         class LinearLayout < Android::View::ViewGroup
           class LayoutParams < Android::View::ViewGroup::LayoutParams
             attach_init Int, Int, Float

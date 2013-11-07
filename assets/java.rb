@@ -1,6 +1,12 @@
 module Jni
   module J
     module Java
+      module Io
+        class File < Java::Lang::Object
+          attach_init Java::Io::File, Java::Lang::String
+          attach Java::Lang::String, "getAbsolutePath"
+        end
+      end
       module Net
         class Socket < Java::Lang::Object
           attach_init Java::Lang::String, Int

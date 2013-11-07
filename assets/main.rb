@@ -17,24 +17,24 @@ module Jni
       vlayout.orientation = LinearLayout::VERTICAL
       self.content_view = vlayout
       
-      webview = WebView.new(self)
+      @webview = WebView.new(self)
             
       button = Button.new(self)
       button.text = "exit"
       button.on_click_listener = Listener.new do
         exit
       end
-      vlayout << webview
+      vlayout << @webview
       vlayout << button
       
       f = Environment.getExternalStorageDirectory 
       html_file = File.new(f, "andruboid/html/index.html")
       
-      webview.addJavascriptInterface(self, "Android")
-      web_settings = webview.getSettings()
+      @webview.addJavascriptInterface(self, "Android")
+      web_settings = @webview.getSettings()
       web_settings.setJavaScriptEnabled(true)
-      webview.setWebViewClient(WebViewClient.new())
-      webview.loadUrl("file://#{html_file.getAbsolutePath}")
+      @webview.setWebViewClient(WebViewClient.new())
+      @webview.loadUrl("file://#{html_file.getAbsolutePath}")
 
       adapter = ArrayAdapter[Java::Lang::String].new self, Android::R::Layout::SIMPLE_LIST_ITEM_1
       @table = self.class.method_table
@@ -91,6 +91,10 @@ module Jni
       p "starting socket"
       socket = Socket.new("www.cloudwalk.io", 80)
       p "finishing socket success"
+    end
+    
+    def webview_jscall
+      @webview.loadUrl("javascript:writeMsg()");
     end
     
     def button

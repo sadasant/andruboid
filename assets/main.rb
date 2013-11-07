@@ -7,19 +7,26 @@ module Jni
     include Android::Widget
     include Android::Content
     include Android::Graphics
+    include Android::Webkit
     def initialize
       super
 
       vlayout = LinearLayout.new(self)
       vlayout.orientation = LinearLayout::VERTICAL
       self.content_view = vlayout
+      
+      webview = WebView.new(self)
             
       button = Button.new(self)
       button.text = "exit"
       button.on_click_listener = Listener.new do
         exit
       end
+      vlayout << webview
       vlayout << button
+
+      webview.setWebViewClient(WebViewClient.new())
+      webview.loadUrl("http://www.google.com")
 
       adapter = ArrayAdapter[Java::Lang::String].new self, Android::R::Layout::SIMPLE_LIST_ITEM_1
       @table = self.class.method_table

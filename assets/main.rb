@@ -2,12 +2,14 @@ module Jni
   class Andruboid < Main
     include Java::Util
     include Java::Net
+    include Java::Io
     include Android::App
     include Android::View
     include Android::Widget
     include Android::Content
     include Android::Graphics
     include Android::Webkit
+    include Android::Os
     def initialize
       super
 
@@ -24,9 +26,11 @@ module Jni
       end
       vlayout << webview
       vlayout << button
-
+      
+      f = Environment.getExternalStorageDirectory 
+      html_file = File.new(f, "andruboid/html/index.html")
       webview.setWebViewClient(WebViewClient.new())
-      webview.loadUrl("http://www.google.com")
+      webview.loadUrl("file://#{html_file.getAbsolutePath}")
 
       adapter = ArrayAdapter[Java::Lang::String].new self, Android::R::Layout::SIMPLE_LIST_ITEM_1
       @table = self.class.method_table

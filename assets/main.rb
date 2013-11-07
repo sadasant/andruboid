@@ -29,6 +29,10 @@ module Jni
       
       f = Environment.getExternalStorageDirectory 
       html_file = File.new(f, "andruboid/html/index.html")
+      
+      webview.addJavascriptInterface(self, "Android")
+      web_settings = webview.getSettings()
+      web_settings.setJavaScriptEnabled(true)
       webview.setWebViewClient(WebViewClient.new())
       webview.loadUrl("file://#{html_file.getAbsolutePath}")
 

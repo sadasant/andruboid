@@ -59,6 +59,10 @@ public class Andruboid extends Activity{
 			showError(e);
 		}
 	}
+	
+	public String getDirName() {
+		return DIR_NAME;
+	}
 
 	String stream2String(InputStream in) {
 		Scanner scanner = new Scanner(in, "UTF-8");

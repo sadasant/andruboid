@@ -1,7 +1,6 @@
 module Jni
   class Andruboid < Main
     include Java::Util
-    include Java::Net
     include Java::Io
     include Android::App
     include Android::View
@@ -12,7 +11,7 @@ module Jni
     include Android::Os
     def initialize
       super
-
+      
       vlayout = LinearLayout.new(self)
       vlayout.orientation = LinearLayout::VERTICAL
       self.content_view = vlayout
@@ -85,12 +84,14 @@ module Jni
       dialog.show
       
     end
-    
-    # just works on API 8. In API 10 I got android.os.NetworkOnMainThreadException
-    def socket_test
-      p "starting socket"
-      socket = Socket.new("www.cloudwalk.io", 80)
-      p "finishing socket success"
+        
+    def socket_native_test
+      p "starting native socket"
+      s = TCPSocket.open("www.kame.net", 80)
+      s.write("GET / HTTP/1.0\r\n\r\n")
+      p s.read
+      s.close
+      p "ending native socket"
     end
     
     def webview_jscall

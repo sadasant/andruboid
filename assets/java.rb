@@ -7,11 +7,6 @@ module Jni
           attach Java::Lang::String, "getAbsolutePath"
         end
       end
-      module Net
-        class Socket < Java::Lang::Object
-          attach_init Java::Lang::String, Int
-        end
-      end
       module Lang
         module Reflect
           class Field < Java::Lang::Object

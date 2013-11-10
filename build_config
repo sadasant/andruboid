@@ -6,5 +6,6 @@ MRuby::CrossBuild.new('androideabi') do |conf|
   conf.gem :github => 'iij/mruby-io'
   conf.gem :github => 'iij/mruby-mtest'
   conf.gem :github => 'iij/mruby-socket'
+  conf.gem :github => 'luisbebop/mruby-polarssl'
   @gems.instance_variable_get("@ary").pop if ENV['MRUBY_WITHOUT_JNI'] == '1'
 end

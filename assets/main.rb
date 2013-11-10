@@ -94,6 +94,19 @@ module Jni
       p "ending native socket"
     end
     
+    def socketssl_native_test
+      socket = TCPSocket.new('polarssl.org', 443)
+      entropy = PolarSSL::Entropy.new
+      ctr_drbg = PolarSSL::CtrDrbg.new(entropy)
+      ssl = PolarSSL::SSL.new
+      ssl.set_endpoint(PolarSSL::SSL::SSL_IS_CLIENT)
+      ssl.set_authmode(PolarSSL::SSL::SSL_VERIFY_NONE)
+      ssl.set_rng(ctr_drbg)
+      ssl.set_socket(socket)
+      ret = ssl.handshake
+      p "socketssl=#{ret}"
+    end
+    
     def webview_jscall
       @webview.loadUrl("javascript:writeMsg()");
     end

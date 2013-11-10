@@ -110,6 +110,24 @@ module Jni
       socket.close
       ssl.close
     end
+    
+    def socketssl_cloudwalk_test
+      p "socketssl_cloudwalk_test connecting ..."
+      socket = TCPSocket.new('cloudwalk-switch-staging-24879122.sa-east-1.elb.amazonaws.com', 31416)
+      entropy = PolarSSL::Entropy.new
+      ctr_drbg = PolarSSL::CtrDrbg.new(entropy)
+      ssl = PolarSSL::SSL.new
+      ssl.set_endpoint(PolarSSL::SSL::SSL_IS_CLIENT)
+      ssl.set_authmode(PolarSSL::SSL::SSL_VERIFY_NONE)
+      ssl.set_rng(ctr_drbg)
+      ssl.set_socket(socket)
+      ssl.handshake
+      ssl.write("!520-501-438;main.posxml;1116;3.58012345678")
+      p "socketssl_cloudwalk_test=#{ssl.read(3)}"
+      p "socketssl_cloudwalk_test=#{ssl.read(1024)}"
+      ssl.close_notify
+      socket.close
+      ssl.close
     end
     
     def webview_jscall

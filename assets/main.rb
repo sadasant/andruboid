@@ -103,8 +103,13 @@ module Jni
       ssl.set_authmode(PolarSSL::SSL::SSL_VERIFY_NONE)
       ssl.set_rng(ctr_drbg)
       ssl.set_socket(socket)
-      ret = ssl.handshake
-      p "socketssl=#{ret}"
+      ssl.handshake
+      ssl.write("GET / HTTP/1.0\r\nHost: polarssl.org\r\n\r\n")
+      p "socketssl_native_test=#{ssl.read(1024)}"
+      ssl.close_notify
+      socket.close
+      ssl.close
+    end
     end
     
     def webview_jscall

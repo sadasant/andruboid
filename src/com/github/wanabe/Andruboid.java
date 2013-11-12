@@ -169,6 +169,7 @@ public class Andruboid extends Activity{
 
 	static class Listener implements 
 	  View.OnClickListener, 
+	  View.OnTouchListener,
 	  RadioGroup.OnCheckedChangeListener,
 	  AdapterView.OnItemClickListener,
 	  AdapterView.OnItemSelectedListener,
@@ -186,7 +187,8 @@ public class Andruboid extends Activity{
 		  ON_SCROLL_STATE_CHANGED = 6,
 		  ON_DATE_SET = 7,
 		  ON_TIME_SET = 8,
-		  ON_DRAW = 9;
+		  ON_DRAW = 9,
+		  ON_TOUCH = 10;
 		Andruboid self;
 		int id;
 
@@ -198,6 +200,12 @@ public class Andruboid extends Activity{
 		@Override
 		public void onClick(View v) {
 			self.handleEvent(ON_CLICK, id, 0);
+		}
+		
+		@Override
+		public boolean onTouch(View v, android.view.MotionEvent event) {
+			self.handleEvent(ON_TOUCH, id, 0);
+			return false;
 		}
 
 		@Override

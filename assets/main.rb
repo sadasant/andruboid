@@ -34,6 +34,10 @@ module Jni
       web_settings.setJavaScriptEnabled(true)
       @webview.setWebViewClient(WebViewClient.new())
       @webview.loadUrl("file://#{html_file.getAbsolutePath}")
+      @webview.on_touch_listener = Listener.new do
+        p "ontouch webview"
+        # @webview.loadUrl("javascript:writeMsg()");
+      end
 
       adapter = ArrayAdapter[Java::Lang::String].new self, Android::R::Layout::SIMPLE_LIST_ITEM_1
       @table = self.class.method_table

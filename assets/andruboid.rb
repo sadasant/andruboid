@@ -8,6 +8,7 @@ module Jni
               include Android::App::DatePickerDialog::OnDateSetListener
               include Android::App::TimePickerDialog::OnTimeSetListener
               include Android::View::View::OnClickListener
+              include Android::View::View::OnTouchListener
               include Android::Widget::AdapterView::OnItemClickListener
               include Android::Widget::AdapterView::OnItemSelectedListener
               include Android::Widget::AbsListView::OnScrollListener
@@ -21,6 +22,7 @@ module Jni
               attach_const Int, "ON_NOTHING_SELECTED"
               attach_const Int, "ON_SCROLL"
               attach_const Int, "ON_SCROLL_STATE_CHANGED"
+              attach_const Int, "ON_TOUCH"
 
               attach_init Com::Github::Wanabe::Andruboid, Int
               def initialize(*types, &block)

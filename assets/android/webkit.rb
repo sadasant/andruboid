@@ -15,6 +15,7 @@ module Jni
           attach Void, "loadUrl", Java::Lang::String
           attach Void, "setWebViewClient", Android::Webkit::WebViewClient
           attach Void, "addJavascriptInterface", Java::Lang::Object, Java::Lang::String
+          attach Void, "setOnTouchListener", Android::View::View::OnTouchListener
           attach Android::Webkit::WebSettings, "getSettings"
         end
       end

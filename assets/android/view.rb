@@ -6,6 +6,9 @@ module Jni
           module OnClickListener
             extend Interface
           end
+          module OnTouchListener
+            extend Interface
+          end
         end
         class ViewGroup < View
           class LayoutParams < Java::Lang::Object

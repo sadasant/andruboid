@@ -9,7 +9,8 @@
     <uses-sdk android:minSdkVersion="8" />
     <application android:label="Andruboid">
         <activity android:name="Andruboid"
-                  android:label="Andruboid">
+                  android:label="Andruboid"
+				  android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

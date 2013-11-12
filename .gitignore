@@ -12,3 +12,4 @@ local.properties
 mruby_config.rb
 proguard-project.txt
 project.properties
+.DS_Store

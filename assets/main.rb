@@ -36,6 +36,7 @@ module Jni
       @webview.loadUrl("file://#{html_file.getAbsolutePath}")
       @webview.on_touch_listener = Listener.new do
         p "ontouch webview"
+        p "self.getNumber #{self.getNumber}"
         # @webview.loadUrl("javascript:writeMsg()");
       end
 

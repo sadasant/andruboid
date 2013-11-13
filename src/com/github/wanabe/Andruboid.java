@@ -25,6 +25,7 @@ import android.content.res.AssetManager;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Color;
+import android.util.Log;
 
 public class Andruboid extends Activity{
 	static final String DIR_NAME = "andruboid";
@@ -58,6 +59,15 @@ public class Andruboid extends Activity{
 		} catch(Throwable e) {
 			showError(e);
 		}
+	}
+	
+	int i = 0;
+	public int getNumber() {
+		return i;
+	}
+	
+	public void setNumber(){
+		i = i + 1;
 	}
 	
 	public String getDirName() {
@@ -204,7 +214,9 @@ public class Andruboid extends Activity{
 		
 		@Override
 		public boolean onTouch(View v, android.view.MotionEvent event) {
-			self.handleEvent(ON_TOUCH, id, 0);
+			Log.i("andruboid", "onTouch id=" + id);
+
+			self.handleEvent(ON_TOUCH, id, 0); //10, 1, 0
 			return false;
 		}
 

@@ -52,6 +52,8 @@ module Jni
               attach_init Andruboid
               attach Void, "setOnDraw", Listener
             end
+            attach Void, "setNumber"
+            attach Int, "getNumber"
           end
         end
       end

@@ -1,9 +1,10 @@
 MRuby::CrossBuild.new('androideabi') do |conf|
   toolchain :androideabi
   conf.gembox 'default'
-  conf.gem :github => 'mattn/mruby-require'
-  conf.gem :github => 'wanabe/mruby-jni'
   conf.gem :github => 'iij/mruby-io'
+  conf.gem :github => 'iij/mruby-tempfile'
+  conf.gem :github => 'sadasant/mruby-require'
+  conf.gem :github => 'wanabe/mruby-jni'
   conf.gem :github => 'iij/mruby-mtest'
   conf.gem :github => 'iij/mruby-socket'
   conf.gem :github => 'luisbebop/mruby-polarssl'
